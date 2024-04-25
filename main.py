@@ -3,7 +3,7 @@ import pandas as pd
 from structure_adress import structure_adress
 
 
-
+sl.set_page_config(page_title='Унификация Адресов')
 sl.title('Унификация географических адресов')
 #sl.subheader('Подтверждения')
 
@@ -19,6 +19,5 @@ if inp != None:
             \n2. Нажми CTRL + SHIFT + ↓ \
             \n3. Нажми CTRL + C для копирования выделенного\
             \n4. Нажми CTRL + V в нужном месте документа для вставки')
-
-
-
+    
+# streamlit run main.py
