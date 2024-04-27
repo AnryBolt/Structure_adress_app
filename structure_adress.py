@@ -18,6 +18,7 @@ def structure_adress(df,col_adr):
   import warnings
   warnings.simplefilter(action='ignore', category=FutureWarning)# уберем высвечивание предупреждений
 
+  df['Исх_адр'] = df[col_adr]
   df[col_adr] = df[col_adr].str.replace(r"(?:бульвар|бульв|бул|б-р)\.?(?![А-я\-])","бульв.",regex=True)\
     .str.replace(r"аллея\.?(?![А-я\-])","аллея.",regex=True)\
     .str.replace(r"линия\.?(?![А-я\-])","линия.",regex=True)\
@@ -87,5 +88,6 @@ def structure_adress(df,col_adr):
 
   df['adr_change'] = df[['type_str', 'n_str', 'street', 'number_house', 'corpus', 'stroenie', 'kv']].agg(' '.join, axis=1)
   df['adr_change'] = df['adr_change'].str.replace("  ", " ").str.replace("  ", " ").str.replace("  ", " ")
-  df = df[[col_adr, 'adr_change', 'type_str', 'n_str', 'street', 'number_house', 'corpus', 'stroenie', 'kv']]
+  del df[col_adr]
+  df = df[['Исх_адр', 'adr_change', 'type_str', 'n_str', 'street', 'number_house', 'corpus', 'stroenie', 'kv']]
   return df
